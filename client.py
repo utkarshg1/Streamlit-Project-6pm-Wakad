@@ -19,7 +19,7 @@ class StockAPI:
             "keywords": company ,
             "function":"SYMBOL_SEARCH"
         }
-        response = requests.get(url, headers=headers, params=querystring)
+        response = requests.get(self.url, headers=self.headers, params=querystring)
         data = response.json()
         # create a blank dictionary
         data2 = {}
@@ -37,7 +37,7 @@ class StockAPI:
             "outputsize":"compact",
             "datatype":"json"
         }
-        response = requests.get(url, headers=headers, params=querystring)
+        response = requests.get(self.url, headers=self.headers, params=querystring)
         data = response.json()
         df = pd.DataFrame(data["Time Series (Daily)"]).T
         # Convert the data to float
